@@ -6,14 +6,17 @@ let g:neocomplete#enable_at_startup = 1
 """""""""""""""""""""""""""""""""""""""""""""""
 "pratical setting
 """""""""""""""""""""""""""""""""""""""""""""""
+"设置当前行，列高亮显示
+"set cursorcolumn
+"highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+"set cursorline
+"highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+
 set relativenumber  "显示行号    
 set backspace=indent,eol,start  "启用回车删除
-autocmd InsertLeave * se nocul  "用浅色高亮当前行  
-autocmd InsertEnter * se cul    "用浅色高亮当前行
 set showcmd         "输入的命令显示出来
 
 set ruler                   "打开状态栏标尺
-set cursorline              "突出显示当前行
 set magic                   "设置魔术
 syntax on "语法高亮
 
