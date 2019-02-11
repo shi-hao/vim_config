@@ -1,17 +1,17 @@
 # vim_config  
   
-3 main plugins to vim, neocomplete, cscope, ctags 
+3 main plugins to vim, neocomplete, cscope, ctags   
 neocomplete: code complete  
 cscope     : finding function reference  
 ctags      : function variable
 
-## install  
+## 1. install  
 it is very simple, first change the script install.sh permission.  
 	chmod +x install.sh  
 then run the script install.sh   
     ./install.sh  
   
-## Troubleshooting  
+## 2. troubleshooting  
 ### neocomplete  
 neocomplete requires Vim 7.3.885+ compiled with if_lua. If :echo has("lua") returns 1, then you're done;   
   
