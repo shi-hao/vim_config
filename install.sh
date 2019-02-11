@@ -34,9 +34,9 @@ cp -r ./neocomplete.vim-ver.2.1/*  $HOME/.vim/
 #check the file .vimrc in home path, if not exist, create it
 if [ ! -f $HOME"/.vimrc" ];then
 	echo $HOME"/.vimrc not exist"
-	touch $HOME/.vim
+	touch $HOME/.vimrc
 else
-	echo $HOME"/.vim exist"
+	echo $HOME"/.vimrc exist"
 fi
 
 cat ./vimrc  >>  $HOME/.vimrc 
