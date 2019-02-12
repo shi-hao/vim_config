@@ -34,7 +34,7 @@ then open any file with vim, then press F10
 ## 3. test  
 ubuntu16-lts, ubuntu18-lts
 
-## 4.contact me
+## 4. contact me
 
 e-mail : shi7631470@163.com
    
@@ -42,6 +42,6 @@ web    ：www.shihao10.com
  
 zhihu  ：https://zhuanlan.zhihu.com/c_86372362
     
-wetchat：shi706734862
+wechat ：shi706734862
 	 
 <img src="https://github.com/shi-hao/c_language_study/blob/master/chatME.jpg" width="250" height="400" />
