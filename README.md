@@ -7,8 +7,11 @@ ctags      : function variable
 
 ## 1. install  
 it is very simple, first change the script install.sh permission.  
-　　chmod +x install.sh  
+
+	chmod +x install.sh  
+
 then run the script install.sh   
+
     ./install.sh  
   
 ## 2. troubleshooting  
