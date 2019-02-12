@@ -17,6 +17,7 @@ then run the script install.sh
 ## 2. troubleshooting  
 ### neocomplete  
 neocomplete requires Vim 7.3.885+ compiled with if_lua. If :echo has("lua") returns 1, then you're done;   
+here is the neocomplete github link: https://github.com/Shougo/neocomplete.vim/tree/ver.2.1  
   
   
 ### cscope  
