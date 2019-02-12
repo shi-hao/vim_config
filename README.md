@@ -1,10 +1,10 @@
 # vim_config  
   
-This project will help you install the vim and 3 main vim plugins.
-3 main plugins to vim:neocomplete, cscope, ctags
+This project will help you install the vim and 3 main vim plugins.  
+3 main plugins:neocomplete, cscope, ctags
 
-neocomplete : code completion    
-cscope/ctags: function, variable reference
+	neocomplete : code completion    
+	cscope/ctags: function, variable reference
 
 ## 1. install  
 it is very simple, first change the script install.sh permission.  
