@@ -5,6 +5,8 @@
 # Description: 
 #====================================================
 
+########################################################
+#vim,cscope,ctags install
 my_vim=vim-gtk
 my_cs=cscope
 my_tags=exuberant-ctags
@@ -21,34 +23,37 @@ sudo apt-get install $my_tags
 #########################################################
 #install the neocomplete.vim-ver.2.1
 #check the dir .vim in home path, if not exist, create it
-if [ ! -d $HOME"/.vim" ];then
-	mkdir $HOME/.vim
-	echo "create the "$HOME"/.vim"
+targetDir="$HOME/.vim"
+neocomplete="./neocomplete.vim-ver.2.1/*"
+if [ ! -d $targetDir ];then
+	mkdir $targetDir
+	echo "create the $targetDir"
 else
 	#copy the neocomplete.vim-ver.2.1 to the home path
-	cp -r ./neocomplete.vim-ver.2.1/*  $HOME/.vim/
+	cp -r $neocomplete  $targetDir
 	echo "install the neocomplete.vim-ver.2.1 done!"
 fi
 
 
 #############################################################
-#add the vim config file
+#add the vim config 
 #check the file .vimrc in home path, if not exist, create it
-if [ ! -f $HOME"/.vimrc" ];then
-	echo "create the "$HOME"/.vimrc done"
-	cat ./vimrc  >>  $HOME/.vimrc 
+targetFile="$HOME/.vimrc"
+vim_config="./vimrc"
+if [ ! -f $targetFile ];then
+	cat $vim_config  >>  $targetFile 
+	echo "create the $targetFile done"
 else
 	#backup .vimrc
-	config_file=$HOME"/.vimrc"
 	timestamp=$(date +%s)
-	file_backup=$HOME"/.vimrc"$timestamp
-	mv $config_file  $file_backup
+	file_backup="$HOME/.vimrc$timestamp"
+	mv  $targetFile  $file_backup
 
 	#delete the old config content
-   config_start="vim config by shi706734862@163.com start"
-   config_end="vim config by shi706734862@163.com end"
-   sed '/vim config by shi706734862@163.com start/,/vim config by shi706734862@163.com end/d' $file_backup > $config_file
-	cat ./vimrc  >>  $config_file 
+	config_start="vim config by shi706734862@163.com start"
+	config_end="vim config by shi706734862@163.com end"
+    sed "/$config_start/,/$config_end/d" $file_backup > $targetFile
+    cat $vim_config  >>  $targetFile 
 
 	echo "add the vim config done!"
 fi
