@@ -52,8 +52,8 @@ else
 	#delete the old config content
 	config_start="vim config by shi706734862@163.com start"
 	config_end="vim config by shi706734862@163.com end"
-    sed "/$config_start/,/$config_end/d" $file_backup > $targetFile
-    cat $vim_config  >>  $targetFile 
+	sed "/$config_start/,/$config_end/d" $file_backup > $targetFile
+	cat $vim_config  >>  $targetFile 
 
 	echo "add the vim config done!"
 fi
