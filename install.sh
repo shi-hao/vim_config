@@ -77,6 +77,7 @@ else
 	config_end="bash config by shi706734862@163.com end"
 	sed  "/$config_start/,/$config_end/d" $file_backup > $targetFile
 	cat  $my_config  >>  $targetFile 
+	source $targetFile
 
 	echo "add the bash config done!"
 fi
