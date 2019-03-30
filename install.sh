@@ -10,6 +10,7 @@
 my_vim=vim-gtk
 my_cs=cscope
 my_tags=exuberant-ctags
+my_rm=trash-cli
 
 #install the vim-gtk
 sudo apt-get install $my_vim
@@ -19,6 +20,9 @@ sudo apt-get install $my_cs
 
 #install the ctags
 sudo apt-get install $my_tags
+
+#install the trash-cli
+sudo apt-get install $my_rm
 
 #########################################################
 #install the neocomplete.vim-ver.2.1

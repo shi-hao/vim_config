@@ -4,7 +4,7 @@
 
 #practical alias config
 alias mv="mv -i"
-alias rm="rm -i"
+alias rm="trash-put"
 
 alias ..="cd .."
 alias ...="cd ../.."
