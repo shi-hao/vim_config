@@ -138,7 +138,7 @@ endfunction
 
 "按f9生成并增加cscope文件
 nmap <f9> :call CscopeAdd() <CR>
-nmap <f10> :call UpdateTags() <CR>
+nmap <f8> :call UpdateTags() <CR>
 
 "自动增加注释，打开vim，按F4键
 function AddTitle()

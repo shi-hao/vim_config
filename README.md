@@ -29,7 +29,7 @@ then open any file with vim, then press F9
 ### ctags  
 ctags will find the data base file in curent dir, if not exists, it will lookup the father dir.  
 if you want create the ctags data base file, please first switch to the code project's root dir,  
-then open any file with vim, then press F10  
+then open any file with vim, then press F8   
 
 ## 3. test  
 ubuntu16-lts, ubuntu18-lts
