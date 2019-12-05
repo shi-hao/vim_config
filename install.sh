@@ -29,7 +29,7 @@ sudo apt-get install $my_rm
 #check the dir .vim in home path, if not exist, create it
 targetDir="$HOME/.vim"
 neocomplete="./neocomplete.vim-ver.2.1/*"
-lightline="./lightline.vim/*"
+lightline="./lightline.vim-master/*"
 if [ ! -d $targetDir ];then
 	mkdir $targetDir
 	echo "create the $targetDir"
