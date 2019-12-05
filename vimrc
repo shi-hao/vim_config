@@ -10,36 +10,41 @@ let g:neocomplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "pratical setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on			"语法高亮
+syntax enable
+
+set relativenumber	"显示行号    
+set showcmd			"显示输入的命令
+
+set ruler			"打开状态栏标尺
+set magic			"设置魔术
+
+set autoindent		"自动缩进
+set cindent
+
+set showmatch		"高亮显示匹配的括号
+set smartindent		"为C程序提供自动缩进
+set tabstop=4		"Tab键的宽度
+
 "设置当前行，列高亮显示
 "set cursorcolumn
 "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 "set cursorline
 "highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
-set relativenumber  "显示行号    
-set backspace=indent,eol,start  "启用回车删除
-set showcmd         "输入的命令显示出来
-
-set ruler                   "打开状态栏标尺
-set magic                   "设置魔术
-syntax on "语法高亮
-
-syntax enable
-set autoindent  "自动缩进
-set cindent
+"启用回车删除
+set backspace=indent,eol,start  
 
 "搜索字符高亮
 set hlsearch
 set incsearch
 
-set showmatch    "高亮显示匹配的括号
-set smartindent  "为C程序提供自动缩进
-set tabstop=4    "Tab键的宽度
-
 "统一缩进为4
 set softtabstop=4
 set shiftwidth=4
-set fencs=utf-8,GB18030,ucs-bom,default,latin1  "设置中文编码，解决中文乱码  
+
+"设置中文编码，解决中文乱码 
+set fencs=utf-8,GB18030,ucs-bom,default,latin1   
 
 "自动增加注释，打开vim，按F4键
 function AddTitle()
@@ -50,13 +55,13 @@ function AddTitle()
 	call append(4,"# Description: ")
 	call append(5,"#====================================================")
 endf
+"F4快捷键
 map <F4> :call AddTitle()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightline config 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"状态栏
-set laststatus=2      " 总是显示状态栏
+set laststatus=2      "总是显示状态栏
 
 "-- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline
 set noshowmode
