@@ -40,7 +40,11 @@ cp -r $neocomplete  $targetDir
 echo "install the neocomplete.vim-ver.2.1 done!"
 
 #copy the lightline to the home path
-cp -r $lightline  "$targetDir/pack/plugins/start/lightline"
+lightlineDIR="$targetDir/pack/plugins/start/lightline"
+if [ ! -d "$lightlineDIR" ]; then
+  mkdir -p "$lightlineDIR"
+fi
+cp -r $lightline  $lightlineDIR 
 echo "install the lightline done!"
 
 
