@@ -29,6 +29,7 @@ sudo apt-get install $my_rm
 #check the dir .vim in home path, if not exist, create it
 targetDir="$HOME/.vim"
 neocomplete="./neocomplete.vim-ver.2.1/*"
+lightline="./lightline.vim/*"
 if [ ! -d $targetDir ];then
 	mkdir $targetDir
 	echo "create the $targetDir"
@@ -37,6 +38,10 @@ fi
 #copy the neocomplete.vim-ver.2.1 to the home path
 cp -r $neocomplete  $targetDir
 echo "install the neocomplete.vim-ver.2.1 done!"
+
+#copy the lightline to the home path
+cp -r $lightline  "$targetDir/pack/plugins/start/lightline"
+echo "install the lightline done!"
 
 
 #############################################################

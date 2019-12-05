@@ -2,14 +2,14 @@
 "vim config by shi706734862@163.com start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete setting
-""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplete#enable_at_startup = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "pratical setting
-"""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "设置当前行，列高亮显示
 "set cursorcolumn
 "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
@@ -41,17 +41,35 @@ set softtabstop=4
 set shiftwidth=4
 set fencs=utf-8,GB18030,ucs-bom,default,latin1  "设置中文编码，解决中文乱码  
 
+"自动增加注释，打开vim，按F4键
+function AddTitle()
+	call setline(1,"#!/bin/bash")
+	call append(1,"#====================================================")
+	call append(2,"# Author: shi")
+	call append(3,"# Create Date: " . strftime("%Y-%m-%d"))
+	call append(4,"# Description: ")
+	call append(5,"#====================================================")
+endf
+map <F4> :call AddTitle()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline config 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "状态栏
 set laststatus=2      " 总是显示状态栏
-highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 
+"-- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline
+set noshowmode
+
+"自定义status line
+"highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 "文件名、路径、行号，总字符数，百分比、ascii码值、16进制值、文件编码格式、用户名、主机名
-set statusline=[%n]\ %f%m%r%h\ \|\ \ \ \|%=\|\ %l,%c\ %p%%\ \|\ ascii=%b,hex=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ \
+"set statusline=[%n]\ %f%m%r%h\ \|\ \ \ \|%=\|\ %l,%c\ %p%%\ \|\ ascii=%b,hex=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ \
 
 
-"""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope config 
-""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "递归查找设置,如果本目录下没有cscope文件，则递归到上一级父目录查找
 if has("cscope")
 set csprg=/usr/bin/cscope
@@ -70,6 +88,7 @@ set nocsverb
 set csverb
 endif
 
+"按键重定义
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR> 
@@ -78,28 +97,6 @@ nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR> 
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-"递归查找设置,如果本目录下没有tags文件，则递归到上一级父目录查找
-set tags=tags;
-set autochdir
-
-"更新ctags
-function! DelTagOfFile(file)
-	if filereadable("tags")
-		let fullpath = a:file
-		let cwd = getcwd()
-		let tagfilename = cwd . "/tags"
-		let f = substitute(fullpath, cwd . "/", "", "")
-		let f = escape(f, './')
-		let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
-		let resp = system(cmd)
-	endif
-endfunction
-
-function! UpdateTags()
-	let cmd = 'ctags -R  --c++-kinds=+p --fields=+iaS --extra=+q'
-	let resp = system(cmd)
-endfunction
 
 "更新cscope
 function! UpdateCscope()
@@ -138,18 +135,36 @@ endfunction
 
 "按f9生成并增加cscope文件
 nmap <f9> :call CscopeAdd() <CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctags config 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"递归查找设置,如果本目录下没有tags文件，则递归到上一级父目录查找
+set tags=tags;
+set autochdir
+
+"更新ctags
+function! DelTagOfFile(file)
+	if filereadable("tags")
+		let fullpath = a:file
+		let cwd = getcwd()
+		let tagfilename = cwd . "/tags"
+		let f = substitute(fullpath, cwd . "/", "", "")
+		let f = escape(f, './')
+		let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
+		let resp = system(cmd)
+	endif
+endfunction
+
+function! UpdateTags()
+	let cmd = 'ctags -R  --c++-kinds=+p --fields=+iaS --extra=+q'
+	let resp = system(cmd)
+endfunction
+
+"按f8生成并增加ctags文件
 nmap <f8> :call UpdateTags() <CR>
 
-"自动增加注释，打开vim，按F4键
-function AddTitle()
-	call setline(1,"#!/bin/bash")
-	call append(1,"#====================================================")
-	call append(2,"# Author: shi")
-	call append(3,"# Create Date: " . strftime("%Y-%m-%d"))
-	call append(4,"# Description: ")
-	call append(5,"#====================================================")
-endf
-map <F4> :call AddTitle()<cr>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vim config by shi706734862@163.com end
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
