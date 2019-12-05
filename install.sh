@@ -4,6 +4,20 @@
 # Create Date: 2019-02-11
 # Description: 
 #====================================================
+#echo function
+function my_echo(){
+	if [ $# -le 1 ];
+	then
+		echo -e "\033[31m Error:my_echo [color] [info] \033[0m"
+		return
+	fi
+
+	declare -A local color_list
+	color_list=(["red"]="31" ["green"]="32" ["yellow"]="33" ["blue"]="34")
+
+	local color=${color_list[$1]}
+	echo -e "\033[${color}m$2\033[0m"
+}
 
 ########################################################
 #vim,cscope,ctags install
@@ -32,12 +46,13 @@ neocomplete="./neocomplete.vim-ver.2.1/*"
 lightline="./lightline.vim-master/*"
 if [ ! -d $targetDir ];then
 	mkdir $targetDir
-	echo "create the $targetDir"
 fi
 
 #copy the neocomplete.vim-ver.2.1 to the home path
 cp -r $neocomplete  $targetDir
-echo "install the neocomplete.vim-ver.2.1 done!"
+if [ $? -eq 0 ]; then
+	my_echo "green" "install the neocomplete.vim-ver.2.1 done!"
+fi
 
 #copy the lightline to the home path
 lightlineDIR="$targetDir/pack/plugins/start/lightline"
@@ -45,8 +60,9 @@ if [ ! -d "$lightlineDIR" ]; then
   mkdir -p "$lightlineDIR"
 fi
 cp -r $lightline  $lightlineDIR 
-echo "install the lightline done!"
-
+if [ $? -eq 0 ]; then
+	my_echo "green" "install the lightline done!"
+fi
 
 #############################################################
 #add the vim config 
@@ -55,7 +71,6 @@ targetFile="$HOME/.vimrc"
 my_config="./vimrc"
 if [ ! -f $targetFile ];then
 	cat  $my_config  >>  $targetFile 
-	echo "create the $targetFile done"
 else
 	#backup .vimrc
 	timestamp=$(date +%s)
@@ -67,8 +82,10 @@ else
 	config_end="vim config by shi706734862@163.com end"
 	sed  "/$config_start/,/$config_end/d" $file_backup > $targetFile
 	cat  $my_config  >>  $targetFile 
+fi
 
-	echo "add the vim config done!"
+if [ $? -eq 0 ]; then
+	my_echo "green" "add the vim config done!"
 fi
 
 ###############################################################
@@ -78,7 +95,6 @@ targetFile="$HOME/.bashrc"
 my_config="./bashrc"
 if [ ! -f $targetFile ];then
 	cat  $my_config  >>  $targetFile 
-	echo "create the $targetFile done"
 else
 	#backup .bashrc
 	timestamp=$(date +%s)
@@ -90,7 +106,9 @@ else
 	config_end="bash config by shi706734862@163.com end"
 	sed  "/$config_start/,/$config_end/d" $file_backup > $targetFile
 	cat  $my_config  >>  $targetFile 
-	source $targetFile
+fi
 
-	echo "add the bash config done!"
+if [ $? -eq 0 ]; then
+	my_echo "green" "add the bash config done!"
+	source $targetFile
 fi
