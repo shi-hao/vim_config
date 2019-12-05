@@ -26,6 +26,8 @@ set showmatch		"高亮显示匹配的括号
 set smartindent		"为C程序提供自动缩进
 set tabstop=4		"Tab键的宽度
 
+"set textwidth=78	"设置每行显示字符长度，自动换行
+
 "设置当前行，列高亮显示
 "set cursorcolumn
 "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
