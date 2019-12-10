@@ -4,7 +4,7 @@
 # Create Date: 2019-02-11
 # Description: 
 #====================================================
-#echo function
+# Echo function
 function my_echo(){
 	if [ $# -le 1 ];
 	then
@@ -20,30 +20,30 @@ function my_echo(){
 }
 
 # Trap ctrl-c
-trap 'echo -e "\n break and exit \n"; exit' INT
+trap "my_echo \"red\" \"\nbreak and exit\n\"; exit" INT
 
 ########################################################
-#vim,cscope,ctags install
+# vim,cscope,ctags install
 my_vim=vim-gtk
 my_cs=cscope
 my_tags=exuberant-ctags
 my_rm=trash-cli
 
-#install the vim-gtk
+# install the vim-gtk
 sudo apt-get install $my_vim
 
-#install the cscope
+# install the cscope
 sudo apt-get install $my_cs
 
-#install the ctags
+# install the ctags
 sudo apt-get install $my_tags
 
-#install the trash-cli
+# install the trash-cli
 sudo apt-get install $my_rm
 
 #########################################################
-#install the neocomplete.vim-ver.2.1
-#check the dir .vim in home path, if not exist, create it
+# install the neocomplete.vim-ver.2.1
+# check the dir .vim in home path, if not exist, create it
 targetDir="$HOME/.vim"
 neocomplete="./neocomplete.vim-ver.2.1/*"
 lightline="./lightline.vim-master/*"
@@ -51,13 +51,13 @@ if [ ! -d $targetDir ];then
 	mkdir $targetDir
 fi
 
-#copy the neocomplete.vim-ver.2.1 to the home path
+# copy the neocomplete.vim-ver.2.1 to the home path
 cp -r $neocomplete  $targetDir
 if [ $? -eq 0 ]; then
 	my_echo "green" "install the neocomplete.vim-ver.2.1 done!"
 fi
 
-#copy the lightline to the home path
+# copy the lightline to the home path
 lightlineDIR="$targetDir/pack/plugins/start/lightline"
 if [ ! -d "$lightlineDIR" ]; then
   mkdir -p "$lightlineDIR"
@@ -68,19 +68,19 @@ if [ $? -eq 0 ]; then
 fi
 
 #############################################################
-#add the vim config 
-#check the file .vimrc in home path, if not exist, create it
+# add the vim config 
+# check the file .vimrc in home path, if not exist, create it
 targetFile="$HOME/.vimrc"
 my_config="./vimrc"
 if [ ! -f $targetFile ];then
 	cat  $my_config  >>  $targetFile 
 else
-	#backup .vimrc
+	# backup .vimrc
 	timestamp=$(date +%s)
 	file_backup="$targetFile$timestamp"
 	mv  $targetFile  $file_backup
 
-	#delete the old config content
+	# delete the old config content
 	config_start="vim config by shi706734862@163.com start"
 	config_end="vim config by shi706734862@163.com end"
 	sed  "/$config_start/,/$config_end/d" $file_backup > $targetFile
@@ -92,19 +92,19 @@ if [ $? -eq 0 ]; then
 fi
 
 ###############################################################
-#add shell command config
-#check the file .bashrc in home path, if not exists, create it
+# add shell command config
+# check the file .bashrc in home path, if not exists, create it
 targetFile="$HOME/.bashrc"
 my_config="./bashrc"
 if [ ! -f $targetFile ];then
 	cat  $my_config  >>  $targetFile 
 else
-	#backup .bashrc
+	# backup .bashrc
 	timestamp=$(date +%s)
 	file_backup="$targetFile$timestamp"
 	mv  $targetFile  $file_backup
 
-	#delete the old config content
+	# delete the old config content
 	config_start="bash config by shi706734862@163.com start"
 	config_end="bash config by shi706734862@163.com end"
 	sed  "/$config_start/,/$config_end/d" $file_backup > $targetFile
