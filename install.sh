@@ -19,6 +19,9 @@ function my_echo(){
 	echo -e "\033[${color}m$2\033[0m"
 }
 
+# Trap ctrl-c
+trap 'echo -e "\n break and exit \n"; exit' INT
+
 ########################################################
 #vim,cscope,ctags install
 my_vim=vim-gtk
