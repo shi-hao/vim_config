@@ -52,8 +52,8 @@ set fencs=utf-8,GB18030,ucs-bom,default,latin1
 function AddTitle()
 	call setline(1,"#!/bin/bash")
 	call append(1,"#====================================================")
-	call append(2,"# Author: shi")
-	call append(3,"# Create Date: " . strftime("%Y-%m-%d"))
+	call append(2,"# Author:")
+	call append(3,"# Date: " . strftime("%Y-%m-%d"))
 	call append(4,"# Description: ")
 	call append(5,"#====================================================")
 endf
